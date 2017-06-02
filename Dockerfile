@@ -8,11 +8,14 @@ COPY ./requirements.txt /tmp/
 RUN pip install -r /tmp/requirements.txt
 
 # deploy magenta-session module
-COPY . /src/
+#COPY . /src/
+COPY . /work/
 
 # port
-#EXPOSE 8080
+EXPOSE 8080 6006
 
-# deamon run
-WORKDIR /src/server/
-CMD python server.py
+# daemon run
+#WORKDIR /src/
+WORKDIR /work/
+#CMD MAGENTA_MODEL=my_model python server/server.py
+CMD python server/server.py
